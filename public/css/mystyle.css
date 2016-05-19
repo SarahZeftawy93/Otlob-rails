@@ -1,0 +1,18 @@
+body {
+  padding: 100px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+h1{
+   color: green;
+}
+span{
+    font: normal normal bold 14px/2 Verdana, Geneva, sans-serif;
+    color: #990000;  
+}  
+span .form-control{
+background: rgba(255,221,221,1);
+} 

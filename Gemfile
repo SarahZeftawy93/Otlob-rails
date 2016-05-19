@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 
 #auth
 gem 'devise', '3.5.2'
+# for make bootstrap
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
 #google
 gem "omniauth-google-oauth2", "~> 0.2.1"
 #facebook
