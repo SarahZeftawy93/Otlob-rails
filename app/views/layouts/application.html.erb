@@ -44,13 +44,13 @@
                         <%= link_to 'Add Group', new_group_path  %> 
                     </li>
                     <li>
-                        <%= link_to 'Show Groups', groups_path  %>
+                        <%= link_to 'Show All Groups', groups_path  %>
                     </li>
                     <li>
                         <%= link_to 'Add Friend', new_friend_path  %> 
                     </li>
                     <li>
-                        <%= link_to 'Show Friends', friends_path  %>
+                        <%= link_to 'Show All Friends', friends_path  %>
                     </li>
                     <li>
                         <%= link_to 'Add orders', orders_path  %>
@@ -59,7 +59,8 @@
                         <a href="#">Contact Us</a>
                     </li>
                     <li>
-                        <a href="/users/sign_out">Sign out</a>
+                        <!-- <a href="/users/sign_out">Sign out</a> -->
+                        <%= link_to 'Sign out', '/users/sign_out',method: :delete  %>
                     </li>
                     <% else %>
                     

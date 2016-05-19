@@ -7,12 +7,18 @@ Rails.application.routes.draw do
   devise_for :users
 
   
-  get 'emy' => 'welcome#hello'
+  # get 'emy' => 'welcome#hello'
 
-   root 'welcome#hello'
+   # root 'welcome#hello'
 
-  # resources :groups do 
-  #   resources :friends
+   root 'user#index'
+
+   # get '/users/sign_out' => 'user#sign_out'
+   
+
+  resources :groups do 
+    resources :friends
+  end
 
   
   # The priority is based upon order of creation: first created -> highest priority.

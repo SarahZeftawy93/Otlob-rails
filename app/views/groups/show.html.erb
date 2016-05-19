@@ -2,13 +2,9 @@
 
 <p>
   <strong>Group:</strong>
-  <%= @group.group %>
+  <i class="fa fa-american-sign-language-interpreting" aria-hidden="true"></i> <%= @group.group %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @group.user %>
-</p>
+<a class="btn btn-primary"<%= link_to 'Edit', edit_group_path(@group) %>&nbsp;&nbsp;||&nbsp;&nbsp;
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<a class="btn btn-primary"<%= link_to 'Back', groups_path %><span class="glyphicon glyphicon-chevron-left"></span><br/><br/><hr/>
