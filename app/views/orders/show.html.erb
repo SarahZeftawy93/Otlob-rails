@@ -25,5 +25,15 @@
   <%= @order.user %>
 </p>
 
+
+<script type="text/javascript">
+
+    var dispatcher = new WebSocketRails('ws//:localhost:3000'); 
+    
+    dispatcher.on_open = function(data) {  
+        console.log('Connection has been established: ', data);
+}  
+</script>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
