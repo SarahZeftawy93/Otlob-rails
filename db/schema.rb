@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519073704) do
+ActiveRecord::Schema.define(version: 20160520153556) do
 
   create_table "amount_orders", force: :cascade do |t|
     t.text     "item",       limit: 65535
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20160519073704) do
   add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
 
   create_table "invites", force: :cascade do |t|
-    t.boolean  "join"
+    t.boolean  "is_joined"
     t.integer  "order_id",   limit: 4
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",           null: false
