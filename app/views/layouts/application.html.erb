@@ -40,17 +40,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <% if current_user %>
+                    
                     <li>
-                        <%= link_to 'Add Group', new_group_path  %> 
+                        <%= link_to 'Group', groups_path  %>
                     </li>
+                
                     <li>
-                        <%= link_to 'Show All Groups', groups_path  %>
-                    </li>
-                    <li>
-                        <%= link_to 'Add Friend', new_friend_path  %> 
-                    </li>
-                    <li>
-                        <%= link_to 'Show All Friends', friends_path  %>
+                        <%= link_to 'Friend', friends_path  %>
                     </li>
                     <li>
                         <%= link_to 'Add orders', orders_path  %>

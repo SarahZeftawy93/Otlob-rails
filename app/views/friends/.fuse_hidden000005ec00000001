@@ -3,7 +3,7 @@
 <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Show My Friends
+                <h1 class="page-header">Listing Friends
                     <!-- <small>EMY ITI : <font color="red"><i>Hello <%= current_user.id%></i></font> eman test </small> -->
                 </h1>
             </div>
@@ -32,8 +32,7 @@
         <hr>
 <% end %>  
 
-<hr/>
-</div>
+
 <a class="btn btn-primary"<%= link_to 'New Friend', new_friend_path %>
 <span class="glyphicon glyphicon-chevron-right"></span>
 

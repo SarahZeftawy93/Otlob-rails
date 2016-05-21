@@ -10,7 +10,25 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @group = Group.find(params[:id])
+    @friends = Friend.all
+    @users = User.all
+    @users_friends_id=[]
+    @users_friends_email=[]
+    for friend in @friends
+      if (current_user.id==friend.user_id)&&(friend.group_id==@group.id)
+          for user in @users
+            if user.id == friend.friend_id
+              # @users_friends_email << friend
+              # @users_friends_email << user.email  
+               @users_friends_id << friend
+              @users_friends_email << user  #user contain all data of users friends
+            end
+          end
+       end 
+    end 
   end
+  
 
   # GET /groups/new
   def new
