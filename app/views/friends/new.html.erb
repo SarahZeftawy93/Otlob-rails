@@ -1,13 +1,16 @@
+
+
 <script src="jquery-1.12.0.min.js" type="text/javascript" ></script>
 <script src="friend.js" type="text/javascript" ></script>
 
 <h1>Show All My Friends</h1>
 	
-<div  id="alldata"></div>
+<!-- <div  id="alldata"></div> -->
 
 <br/>
 <hr/>
 <div class="well">
+<p id="desnotice"><%= notice %></p>
 
 <%= form_for(@friend) do |f| %>
   <% if @friend.errors.any? %>

@@ -4,6 +4,7 @@ class FriendsController < ApplicationController
   # GET /friends
   # GET /friends.json
   def index
+    if (current_user)
     @friends = Friend.all
     @users = User.all
     @users_friends_id=[]
@@ -23,6 +24,9 @@ class FriendsController < ApplicationController
     end 
     @users_friends_email = @users_friends_email.uniq 
     # @users_friends_id = @users_friends_id.uniq 
+    else
+      redirect_to "/users/sign_in"
+    end 
   end
 
   # GET /friends/1
@@ -31,21 +35,13 @@ class FriendsController < ApplicationController
     @friend = Friend.find(params[:id])
   end
 
-  # def checkmail
-
-  #   email= [params[:email]]
-  #   @user = User.find_by email:email
-  #   if(@user)
-  #       chek=array('ansuser'=>'true');
-  #     else
-  #       chek=array('ansuser'=>'false');
-  #     end
-  #   # @user = User.select("id").where('users.email'=>@friend['email'])
-  # end 
-
   # GET /friends/new
   def new
-    @friend = Friend.new
+    if (current_user)
+      @friend = Friend.new
+    else
+      redirect_to "/users/sign_in"
+    end 
   end
 
   # GET /friends/1/edit
@@ -55,6 +51,7 @@ class FriendsController < ApplicationController
   # POST /friends
   # POST /friends.json
   def create
+    if (current_user)
     @friend = Friend.new(friend_params)
     @friend.group_id=params[:group_id]
     # # @friend['email']
@@ -63,6 +60,7 @@ class FriendsController < ApplicationController
     @users = User.all
     flag=0
     gflag=0
+    falsgflage=0
     for user in @users do
       if user.email == @friend.email
             @friend['user_id']=current_user.id
@@ -80,7 +78,7 @@ class FriendsController < ApplicationController
 
     if flag==1
         if gflag==1
-        respond_to do |format|
+          respond_to do |format|
             if @friend.save
               format.html { redirect_to group_path(@friend.group_id), notice: 'Friend was successfully created.' }
               format.json { render :show, status: :created, location: @friend }
@@ -102,10 +100,24 @@ class FriendsController < ApplicationController
 
        end 
     else
-        respond_to do |format|
-        format.html { render :new }
-        format.json { render json: @friend.errors, status: :unprocessable_entity }
-        end  
+      if params[:group_id]==nil
+          respond_to do |format|
+           format.html { redirect_to new_friend_path,notice: 'Sorry,Email Friend Not Found ???'}
+            # format.html { render :new }
+            format.json { render json: @friend.errors, status: :unprocessable_entity }
+            end 
+        else
+          @friend.group_id=params[:group_id]
+          respond_to do |format|
+            format.html { redirect_to group_path(@friend.group_id),notice: 'Sorry,Email Friend Not Found ???'}
+            format.json { render json: @friend.errors, status: :unprocessable_entity }
+          end 
+        end 
+
+    end 
+
+    else
+      redirect_to "/users/sign_in"
     end     
   end
 
@@ -126,11 +138,25 @@ class FriendsController < ApplicationController
   # DELETE /friends/1
   # DELETE /friends/1.json
   def destroy
-    @friend.destroy
-    respond_to do |format|
-      format.html { redirect_to friends_url, notice: 'Friend was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    if (current_user)
+      if params[:group_id]==nil
+          # @friend.group_id=params[:group_id]
+          @friend.destroy
+          respond_to do |format|
+            format.html { redirect_to friends_url, notice: 'Friend was successfully destroyed.' }
+            format.json { head :no_content }
+          end
+      else
+          @friend.group_id=params[:group_id]
+          @friend.destroy
+          respond_to do |format|
+            format.html { redirect_to group_path(@friend.group_id), notice: 'Friend was successfully destroyed from Group.' }
+            format.json { head :no_content }
+          end
+      end
+    else
+      redirect_to "/users/sign_in"
+    end 
   end
 
   private

@@ -4,12 +4,17 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all   
+    if(current_user)
+      @groups = Group.all
+    else
+      redirect_to "/users/sign_in"
+    end    
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+    if(current_user)
     @group = Group.find(params[:id])
     @friends = Friend.all
     @users = User.all
@@ -27,12 +32,19 @@ class GroupsController < ApplicationController
           end
        end 
     end 
+    else
+      redirect_to "/users/sign_in"
+    end 
   end
   
 
   # GET /groups/new
   def new
-    @group = Group.new
+    if (current_user)
+      @group = Group.new
+    else
+      redirect_to "/users/sign_in"
+    end 
   end
 
   # GET /groups/1/edit
@@ -42,6 +54,7 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
+    if(current_user)
     @group = Group.new(group_params)
     @group['user_id']=current_user.id
     respond_to do |format|
@@ -53,11 +66,15 @@ class GroupsController < ApplicationController
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
+    else
+      redirect_to "/users/sign_in"
+    end 
   end
 
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+    if (current_user)
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
@@ -67,16 +84,23 @@ class GroupsController < ApplicationController
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
+    else
+      redirect_to "/users/sign_in"
+    end 
   end
 
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    if (current_user)
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }
     end
+    else
+      redirect_to "/users/sign_in"
+    end 
   end
 
   private
