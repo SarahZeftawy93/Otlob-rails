@@ -2,21 +2,21 @@
 
 <h1>Listing My Groups</h1>
 
-<table border="2">
-  <thead>
-    <tr bgcolor="pink">
+<table class="table">
+  <thead class="thead-default">
+    <tr>
+      <th>#</th>
       <th>Group</th>
-      <th>User</th>
       <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
+    <tr>
+    <% i=0 %>
     <% @groups.each do |group| %>
-      <tr>
         <% if current_user.id == group.user.id %>
+           <th scope="row"><%= i+=1 %></th>
             <td><%= group.group %></td>
-            <td><%= group.user.id %></td>
 
        <td> <a class="btn btn-primary" <%= link_to 'Show Group', group %>&nbsp;&nbsp;||&nbsp;&nbsp;
 
@@ -30,8 +30,11 @@
   </tbody>
 </table>
 
-<br>
 
+<br>
+<hr/>
 
 <a class="btn btn-primary"<%= link_to 'New Group', new_group_path %><span class="glyphicon glyphicon-chevron-right"></span>
+
+<hr/>
 

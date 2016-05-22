@@ -28,8 +28,16 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+        # find user invited..
+        #send notification..
+
+        #dh user_invited: 
+        #user_invited = @order.user
+
+
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
+
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
