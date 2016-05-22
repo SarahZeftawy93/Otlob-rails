@@ -21,8 +21,6 @@
           <td><%= amount_order.amount %></td>
           <td><%= amount_order.price %></td>
           <td><%= amount_order.comment %></td>
-          <!-- <td><%= link_to 'Show', amount_order %></td> -->
-<!--           <td><%= link_to "Edit", edit_amount_order_path(amount_order), class: "btn btn-default" %></td> -->
           <td><%= link_to "delete", amount_order_path(amount_order), method: 'delete',data: { confirm: 'Are you sure you want to delete?', :class => 'delete_order' } %></td>
         </tr>
       <% end %>
@@ -65,12 +63,12 @@
   <% end %>
 </table>
 
-<%= link_to "#{Invite.all.count} of fiends invited" %>  <br/>
+<%= link_to "#{Invite.all.count} of fiends invited", invites_url %>  <br/>
 
 <% x = 0 %>
 <% Invite.all.each do |invite| %>
-  <% if invite.join == true %>
+  <% if invite.is_joined == true %>
     <% x = x+1 %>
   <% end %>
 <% end %>
-<%= link_to "#{x} of fiends joined" %>  
+<%= link_to "#{x} of fiends joined"  %>  

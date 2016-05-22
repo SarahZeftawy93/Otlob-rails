@@ -1,0 +1,28 @@
+<div class="col-md-7">
+  <p id="notice"><%= notice %></p>
+  <h1>Invited Firiends</h1>
+<table class="table table-bordered table-condensed table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th></th>
+      </tr>
+    </thead>
+<% Invite.all.each do |invite| %>
+  <% if invite.join == true %>
+    <% x = x+1 %>
+  <% end %>
+<% end %>
+    <tbody>
+      <% Invite.all.each do |invite| %>
+        <% if invite.is_joined == true %>
+          <tr>
+            <td><%= invite.id %></td>
+        
+          <td><%= link_to "delete", invited_path(invite), method: 'delete',data: { confirm: 'Are you sure you want to delete?', :class => 'delete_order' } %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

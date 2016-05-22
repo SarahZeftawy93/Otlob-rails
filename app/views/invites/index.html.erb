@@ -15,12 +15,13 @@
   <tbody>
     <% @invites.each do |invite| %>
       <tr>
-        <td><%= invite.join %></td>
-        <td><%= invite.order %></td>
-        <td><%= invite.user %></td>
-        <td><%= link_to 'Show', invite %></td>
-        <td><%= link_to 'Edit', edit_invite_path(invite) %></td>
-        <td><%= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= invite.is_joined %></td>
+        <td><%= invite.order_id %></td>
+        <td><%= invite.user_id %></td>
+
+          <% if invite.user_id == 2%>
+             <td><%= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end%>
       </tr>
     <% end %>
   </tbody>
