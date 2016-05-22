@@ -1,6 +1,6 @@
 <div class="col-md-7">
   <p id="notice"><%= notice %></p>
-  <h1>Listing Amount Orders</h1>
+  <h1>Listing Friends Joined</h1>
 <table class="table table-bordered table-condensed table-hover">
     <thead>
       <tr>
@@ -10,7 +10,7 @@
     </thead>
 
     <tbody>
-      <% @joines.each do |joined| %>
+      <% @joins.each do |joined| %>
         <tr>
           <td><%= joined.id %></td>
           <td><%= link_to "delete", joins_path(joined), method: 'delete',data: { confirm: 'Are you sure you want to delete?', :class => 'delete_order' } %></td>

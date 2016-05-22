@@ -1,0 +1,15 @@
+<div class="col-md-7">
+  <p id="notice"><%= notice %></p>
+  <h1>Friends Joined</h1>
+      <% @joins.each do |joined| %>
+        <ul class="list-group">
+          <% User.all.each do |user| %>
+              <% if user.id == joined.user_id %>
+                  <li class="list-group-item">
+                    <%= user.username %>
+                  </li>
+              <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+</div>

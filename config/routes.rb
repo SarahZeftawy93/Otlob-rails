@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :counter
 
+  get 'friendsJoined' => 'amount_orders#joined'
 
   # get 'emy' => 'welcome#hello'
 
