@@ -29,9 +29,9 @@ class AmountOrdersController < ApplicationController
     respond_to do |format|
       if @amount_order.save
         format.html { redirect_to @amount_order, notice: 'Amount order was successfully created.' }
-        format.json { render :show, status: :created, location: @amount_order }
+        format.json { render :index, status: :created, location: @amount_order }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @amount_order.errors, status: :unprocessable_entity }
       end
     end
@@ -56,9 +56,15 @@ class AmountOrdersController < ApplicationController
   def destroy
     @amount_order.destroy
     respond_to do |format|
-      format.html { redirect_to amount_orders_url, notice: 'Amount order was successfully destroyed.' }
+      format.html { redirect_to amount_orders_url }
       format.json { head :no_content }
+      format.js   { render :layout => false }
     end
+
+    # respond_to do |format|
+    #   format.html { redirect_to amount_orders_url, notice: 'Amount order was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private
