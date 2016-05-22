@@ -32,6 +32,7 @@ class GroupsController < ApplicationController
           end
        end 
     end 
+    @users_friends_email=@users_friends_email.uniq
     else
       redirect_to "/users/sign_in"
     end 
