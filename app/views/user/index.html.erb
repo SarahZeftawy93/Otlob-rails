@@ -1,3 +1,36 @@
-<h1> wellcome emyyy</h1>
+<h1> wellcome&nbsp;&nbsp;&nbsp;
+<% @currentuser.each do |cuser| %>
+	<%= cuser.email %>
+	<% end %>
 
-<%= current_user.id %>
+</h1><hr/><hr/>
+
+ <div class="row">
+
+	<div class="col-md-6" style=" background-color:lightcyan ;">
+		<h3><font color="brown"><u> My Order :</u></font></h3>
+			<% @myorder.each do |myord| %>
+	    	<a href="#"></a>
+	        <!-- <img class="img-responsive" width="50"  src="/images/2.jpg" alt=""> -->
+	        <strong><%= myord.order%>&nbsp;&nbsp;</strong><font color="heavycyan" size="3"> on &nbsp;&nbsp;<%= myord.created_at%></font><br/><br/>  
+	        <% end %>
+	        <hr/>
+
+	</div>
+
+	<div class="col-md-6" style=" background-color:lightblue ;">
+		 <h3><font color="heavybrown"><u>Order My Friends :</u></font></h3>
+	    	<% @orderfriends.each do |friendord| %>
+	    	<a href="#"></a>
+	        <!-- <img class="img-responsive" width="50"  src="/images/2.jpg" alt=""> -->
+	        <font color="blue" size="3"><u>name</u> has created <u>on order</u> for&nbsp;&nbsp;<strong><%= friendord.order%>&nbsp;&nbsp;</strong> From &nbsp;&nbsp;<u><strong><%= friendord.place%></strong></u>&nbsp;&nbsp;on &nbsp;&nbsp;<%= friendord.created_at%></font> <br/><br/> 
+	        <% end %>
+	        <hr/>
+	</div>
+
+ </div>
+
+
+<hr>
+
+

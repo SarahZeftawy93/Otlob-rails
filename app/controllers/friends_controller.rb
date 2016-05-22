@@ -55,7 +55,7 @@ class FriendsController < ApplicationController
     @friend = Friend.new(friend_params)
     @friend.group_id=params[:group_id]
     # # @friend['email']
-    # # @user = User.select("id").where('users.email'=>@friend['email'])
+    # # @user = User.select("id").where('users.email'=>@friend.email)
     # abort
     @users = User.all
     flag=0
