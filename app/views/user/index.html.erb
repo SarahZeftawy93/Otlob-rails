@@ -1,18 +1,43 @@
+
+
+
+
 <h1> wellcome&nbsp;&nbsp;&nbsp;
 <% @currentuser.each do |cuser| %>
 	<%= cuser.email %>
 	<% end %>
 
-</h1><hr/><hr/>
+</h1><hr/>
+<div id="div1" class="modal fade" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div id="titlediv" class="model-header text-center">
+				<button class="close" data-dismiss="modal"type="">&times;</button>
+			</div>
+			<div class="modal-body form-horizontal" id="div2">
+				
+			</div>
+			<div class="modal-footer">
+				<input type="button" class="btn btn-danger" data-dismiss="modal" value="close"/>
+			</div>
+		</div>
+	</div>
+</div>
 
+
+
+<div onclick="">
+	<button type="">notiiii</button>
+</div>
+<hr/>
  <div class="row">
 
-	<div class="col-md-6" style=" background-color:lightcyan ;">
+	<div class="col-md-5" style=" background-color:lightcyan; margin:10px ;">
 		<h3><font color="brown"><u> My Order :</u></font></h3>
 			<% @myorder.each do |myord| %>
 	    	<a href="#"></a>
 	        <!-- <img class="img-responsive" width="50"  src="/images/2.jpg" alt=""> -->
-	        <strong><%= myord.order%>&nbsp;&nbsp;</strong><font color="heavycyan" size="3"> on &nbsp;&nbsp;<%= myord.created_at%></font><br/><br/>  
+	       <font color="heavycyan" size="3"><u> <strong><%= myord.order%></strong></u>&nbsp;&nbsp; on &nbsp;&nbsp;<%= myord.created_at%></font><br/><br/>  
 	        <% end %>
 	        <hr/>
 
@@ -21,9 +46,14 @@
 	<div class="col-md-6" style=" background-color:lightblue ;">
 		 <h3><font color="heavybrown"><u>Order My Friends :</u></font></h3>
 	    	<% @orderfriends.each do |friendord| %>
-	    	<a href="#"></a>
+
+	    	<% User.all.each do |user| %>
+	    		<% if user.id== friendord.user_id %>
+	    			<font color="blue" size="3"><u><%= user.email %></u> 
+	    	<% end %>
+	    	<% end %>		
 	        <!-- <img class="img-responsive" width="50"  src="/images/2.jpg" alt=""> -->
-	        <font color="blue" size="3"><u>name</u> has created <u>on order</u> for&nbsp;&nbsp;<strong><%= friendord.order%>&nbsp;&nbsp;</strong> From &nbsp;&nbsp;<u><strong><%= friendord.place%></strong></u>&nbsp;&nbsp;on &nbsp;&nbsp;<%= friendord.created_at%></font> <br/><br/> 
+	        &nbsp;&nbsp;has created <u>on order</u> for&nbsp;&nbsp;<strong><%= friendord.order%>&nbsp;&nbsp;</strong> From &nbsp;&nbsp;<u><strong><%= friendord.place%></strong></u>&nbsp;&nbsp;on &nbsp;&nbsp;<%= friendord.created_at%></font> <br/><br/> 
 	        <% end %>
 	        <hr/>
 	</div>
@@ -33,4 +63,6 @@
 
 <hr>
 
-
+<script>
+	
+</script>

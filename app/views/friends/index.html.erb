@@ -12,18 +12,29 @@
 
         <!-- Project One -->
         <div class="row">
-    <% @users_friends_email.each do |fue| %>
+        <% @users_friends_id.each do |fuid| %>  
 
             <div class="col-md-7">
                 <a href="#"></a>
                     <img class="img-responsive" width="300"  src="/images/2.jpg" alt="">
-                    <h3><font color="blue"><%= fue.email %></font></h3>
+                    <% User.all.each do |user| %>
+                        <% if user.id== fuid.friend_id %>
+                           <h3><font color="blue"><%= user.email %></font></h3>
+                    <% end %>
+                    <% end %>
+
+
+                    
                     <hr/>
             
             </div>
-            <%end%>
             <div class="col-md-5">            
-        <% @users_friends_id.each do |fuid| %>  
+
+
+        
+
+
+
                 <a class="btn btn-danger" <%= link_to 'Remove', fuid, method: :delete, data: { confirm: 'Are you sure?' } %><span class="glyphicon glyphicon-chevron-right"></span>
         </div>
         <!-- /.row -->
