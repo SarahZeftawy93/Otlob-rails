@@ -4,60 +4,71 @@ class AmountOrdersController < ApplicationController
   # GET /amount_orders
   # GET /amount_orders.json
   def index
-    @amount_orders = AmountOrder.all
+    if (current_user)
+      @amount_orders = AmountOrder.all
+    else
+      redirect_to "/users/sign_in"
+    end
   end
 
-  # GET /amount_orders/1
-  # GET /amount_orders/1.json
+  def joined
+    @joins = Invite.where(:is_joined => 1) 
+  end
+  
   def show
   end
 
-  # GET /amount_orders/new
   def new
-    @amount_order = AmountOrder.new
+    if (current_user)
+      @amount_order = AmountOrder.new
+    else
+      redirect_to "/users/sign_in"
+    end
   end
 
-  # GET /amount_orders/1/edit
   def edit
   end
 
-  # POST /amount_orders
-  # POST /amount_orders.json
   def create
-    @amount_order = AmountOrder.new(amount_order_params)
-
-    respond_to do |format|
-      if @amount_order.save
-        format.html { redirect_to @amount_order, notice: 'Amount order was successfully created.' }
-        format.json { render :show, status: :created, location: @amount_order }
-      else
-        format.html { render :new }
-        format.json { render json: @amount_order.errors, status: :unprocessable_entity }
+    if (current_user)
+      @amount_order = AmountOrder.new(amount_order_params)
+      @amount_order['user_id'] = current_user.id
+      respond_to do |format|
+        if @amount_order.save
+          format.html { redirect_to amount_orders_path, notice: 'Amount order was successfully created.' }
+          format.json { render :index, status: :created, location: @amount_order }
+        else
+          format.html { render :index }
+          format.json { render json: @amount_order.errors, status: :unprocessable_entity }
+        end
       end
-    end
+    else
+      redirect_to "/users/sign_in"
+    end  
   end
 
-  # PATCH/PUT /amount_orders/1
-  # PATCH/PUT /amount_orders/1.json
   def update
-    respond_to do |format|
-      if @amount_order.update(amount_order_params)
-        format.html { redirect_to @amount_order, notice: 'Amount order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @amount_order }
-      else
-        format.html { render :edit }
-        format.json { render json: @amount_order.errors, status: :unprocessable_entity }
+    if (current_user)
+      respond_to do |format|
+        if @amount_order.update(amount_order_params)
+          format.html { redirect_to @amount_order, notice: 'Amount order was successfully updated.' }
+          format.json { render :show, status: :ok, location: @amount_order }
+        else
+          format.html { render :edit }
+          format.json { render json: @amount_order.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to "/users/sign_in"
     end
   end
 
-  # DELETE /amount_orders/1
-  # DELETE /amount_orders/1.json
   def destroy
     @amount_order.destroy
     respond_to do |format|
-      format.html { redirect_to amount_orders_url, notice: 'Amount order was successfully destroyed.' }
+      format.html { redirect_to amount_orders_url }
       format.json { head :no_content }
+      format.js   { render :layout => false }
     end
   end
 

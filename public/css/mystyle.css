@@ -16,3 +16,10 @@ span{
 span .form-control{
 background: rgba(255,221,221,1);
 } 
+
+.divremove{
+	float: right;
+}
+#desnotice{
+	color:red;
+}

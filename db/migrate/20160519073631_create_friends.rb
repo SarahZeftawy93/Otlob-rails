@@ -2,6 +2,7 @@ class CreateFriends < ActiveRecord::Migration
   def change
     create_table :friends do |t|
       t.integer :friend_id
+      t.text :email
       t.references :group, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
 

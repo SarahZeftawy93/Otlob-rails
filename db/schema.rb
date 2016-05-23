@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520153556) do
+ActiveRecord::Schema.define(version: 20160520173058) do
 
   create_table "amount_orders", force: :cascade do |t|
     t.text     "item",       limit: 65535
@@ -28,11 +28,12 @@ ActiveRecord::Schema.define(version: 20160520153556) do
   add_index "amount_orders", ["user_id"], name: "index_amount_orders_on_user_id", using: :btree
 
   create_table "friends", force: :cascade do |t|
+    t.text     "email",      limit: 65535
     t.integer  "friend_id",  limit: 4
     t.integer  "group_id",   limit: 4
     t.integer  "user_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "friends", ["group_id"], name: "index_friends_on_group_id", using: :btree

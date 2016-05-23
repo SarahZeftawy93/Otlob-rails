@@ -21,6 +21,10 @@ class InvitesController < ApplicationController
   def edit
   end
 
+  # def joined
+  #   @joins = Invite.where(:is_joined => 1).take 
+  # end
+
   # POST /invites
   # POST /invites.json
   def create

@@ -1,10 +1,70 @@
-<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Group:</strong>
-  <i class="fa fa-american-sign-language-interpreting" aria-hidden="true"></i> <%= @group.group %>
+<h1><font color="heavybrown"><u> Group:</u></font>
+  <i class="fa fa-american-sign-language-interpreting" aria-hidden="true"></i> <%= @group.group %></h1>
 </p>
-
+<hr/>
 <a class="btn btn-primary"<%= link_to 'Edit', edit_group_path(@group) %>&nbsp;&nbsp;||&nbsp;&nbsp;
 
-<a class="btn btn-primary"<%= link_to 'Back', groups_path %><span class="glyphicon glyphicon-chevron-left"></span><br/><br/><hr/>
+<a class="btn btn-primary"<%= link_to 'Back', groups_path %><span class="glyphicon glyphicon-chevron-left"></span><br/>
+
+<%= hidden_field_tag :'group_id' ,@group.id %>
+<hr>
+
+
+
+<div class="well">
+        <h4>Add a friends:</h4>
+
+        <p id="desnotice"><%= notice %></p>
+
+        <%= form_for([@group,@group.friends.build]) do |f| %>
+
+          <div class="field">
+            
+         <%= f.label :email %><br>
+            <%= f.text_area :email %>
+
+          </div>
+          
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+        <% end %>
+
+        
+    </div>
+
+    <hr>
+
+<!-- for display group friends -->
+<h3><font color="heavybrown"><u> Show Friends :</u></font></h3>
+
+<div class="row">
+        <% @users_friends_id.each do |fuid| %>  
+
+            <div class="col-md-7">
+                <a href="#"></a>
+                    <img class="img-responsive" width="300"  src="/images/2.jpg" alt="">
+                    <% User.all.each do |user| %>
+                        <% if user.id== fuid.friend_id %>
+                           <strong>Email My Friend: &nbsp;&nbsp;&nbsp;</strong><font color="brown" size="3"><%= user.email %> </font>
+                    <% end %>
+                    <% end %>
+
+
+                    
+                    <hr/>
+            
+            </div>
+            <div class="col-md-5">            
+
+                <a class="btn btn-danger" <%= link_to 'Remove', fuid, method: :delete, data: { confirm: 'Are you sure?' } %><span class="glyphicon glyphicon-chevron-right"></span>
+        </div>
+
+<hr/>
+<% end %>
+
+
+
+

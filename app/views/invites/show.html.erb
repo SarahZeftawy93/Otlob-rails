@@ -2,17 +2,17 @@
 
 <p>
   <strong>Join:</strong>
-  <%= @invite.join %>
+  <%= @invite.is_joined %>
 </p>
 
 <p>
   <strong>Order:</strong>
-  <%= @invite.order %>
+  <%= @invite.order_id %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @invite.user %>
+  <%= @invite.user_id %>
 </p>
 
 <%= link_to 'Edit', edit_invite_path(@invite) %> |
