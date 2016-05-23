@@ -177,18 +177,19 @@ class FriendsController < ApplicationController
   # DELETE /friends/1.json
   def destroy
     if (current_user)
-      if params[:group_id]==nil
+      if @friend.group_id==nil
           # @friend.group_id=params[:group_id]
-          @friend.destroy
+          # @friend.destroy
+          Friend.where(user_id:@friend.user_id,friend_id:@friend.friend_id).destroy_all
           respond_to do |format|
             format.html { redirect_to friends_url, notice: 'Friend was successfully destroyed.' }
             format.json { head :no_content }
           end
       else
-          @friend.group_id=params[:group_id]
+          group_id=@friend.group_id
           @friend.destroy
           respond_to do |format|
-            format.html { redirect_to group_path(@friend.group_id), notice: 'Friend was successfully destroyed from Group.' }
+            format.html { redirect_to group_path(group_id), notice: 'Friend was successfully destroyed from Group.' }
             format.json { head :no_content }
           end
       end

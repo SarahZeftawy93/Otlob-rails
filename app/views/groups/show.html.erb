@@ -40,24 +40,31 @@
 <!-- for display group friends -->
 <h3><font color="heavybrown"><u> Show Friends :</u></font></h3>
 
- <div class="row">
-<% @users_friends_email.each do |gfriend| %> 
+<div class="row">
+        <% @users_friends_id.each do |fuid| %>  
+
             <div class="col-md-7">
                 <a href="#"></a>
                     <img class="img-responsive" width="300"  src="/images/2.jpg" alt="">
-                    <strong>Email My Friend: &nbsp;&nbsp;&nbsp;</strong><font color="brown" size="3"><%= gfriend.email %> </font>
+                    <% User.all.each do |user| %>
+                        <% if user.id== fuid.friend_id %>
+                           <strong>Email My Friend: &nbsp;&nbsp;&nbsp;</strong><font color="brown" size="3"><%= user.email %> </font>
+                    <% end %>
+                    <% end %>
+
+
+                    
                     <hr/>
             
             </div>
-            <%end%>
             <div class="col-md-5">            
-        <% @users_friends_id.each do |fuid| %>  
+
                 <a class="btn btn-danger" <%= link_to 'Remove', fuid, method: :delete, data: { confirm: 'Are you sure?' } %><span class="glyphicon glyphicon-chevron-right"></span>
         </div>
-        <!-- /.row -->
+
+<hr/>
+<% end %>
 
 
-        <hr>
-<% end %> 
 
-	 
+
