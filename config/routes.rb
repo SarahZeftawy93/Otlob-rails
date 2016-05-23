@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   resources :orders
   resources :friends
   resources :groups
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  resources :counter
 
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  get 'friendsJoined' => 'amount_orders#joined'
 
   # get 'emy' => 'welcome#hello'
 

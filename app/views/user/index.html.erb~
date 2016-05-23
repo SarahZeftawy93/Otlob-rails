@@ -8,6 +8,27 @@
 	<% end %>
 
 </h1><hr/>
+<div id="div1" class="modal fade" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div id="titlediv" class="model-header text-center">
+				<button class="close" data-dismiss="modal"type="">&times;</button>
+			</div>
+			<div class="modal-body form-horizontal" id="div2">
+				
+			</div>
+			<div class="modal-footer">
+				<input type="button" class="btn btn-danger" data-dismiss="modal" value="close"/>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div onclick="">
+	<button type="">notiiii</button>
+</div>
 <hr/>
  <div class="row">
 

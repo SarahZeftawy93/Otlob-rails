@@ -13,6 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20160523143217) do
 
+ActiveRecord::Schema.define(version: 20160520173058) do
+
   create_table "amount_orders", force: :cascade do |t|
     t.text     "item",       limit: 65535
     t.text     "comment",    limit: 65535
@@ -28,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160523143217) do
   add_index "amount_orders", ["user_id"], name: "index_amount_orders_on_user_id", using: :btree
 
   create_table "friends", force: :cascade do |t|
+    t.text     "email",      limit: 65535
     t.integer  "friend_id",  limit: 4
     t.text     "email",      limit: 65535
     t.integer  "group_id",   limit: 4
