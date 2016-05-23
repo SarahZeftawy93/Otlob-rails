@@ -2,14 +2,18 @@
 
 <h1>Listing Orders</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
+
+  
     <tr>
       <th>Order</th>
       <th>Place</th>
-      <th>Image</th>
-      <th>Date</th>
-      <th>User</th>
+      <th>Link_Image</th>
+      <th>invited</th>
+      <th>Join</th>
+      <th>Status</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,14 +21,23 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.order %></td>
-        <td><%= order.place %></td>
-        <td><%= order.Image %></td>
-        <td><%= order.date %></td>
-        <td><%= order.user %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="col-md-3" ><%= order.order %></td>
+        <td class="col-md-3"><%= order.place %></td>
+        <td class="col-md-3"><%= order.Image %></td>
+        <% @nums=Invite.where(order_id: order.id).count %>
+        <% @joins=Invite.where(order_id: order.id,status_user: true).count %> 
+
+
+
+        <td class="col-md-3"><%= @nums %></td>
+        <td class="col-md-3"><%= @joins %></td>
+
+         
+
+
+        <td class="col-md-1"><%= link_to 'View', order, class: 'btn btn-primary' %></td>
+        <td class="col-md-1"><%= link_to 'Finish', edit_order_path(order),class: 'btn btn-info' %></td>
+        <td class="col-md-1"><%= link_to 'Cancel', order, method: :delete, data: { confirm: 'Are you sure?' } ,class: 'btn btn-danger'%></td>
       </tr>
     <% end %>
   </tbody>

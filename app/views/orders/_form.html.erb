@@ -12,26 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :order %><br>
+   <%= f.label :order %><br>
     <%= f.text_area :order %>
+
   </div>
   <div class="field">
     <%= f.label :place %><br>
     <%= f.text_area :place %>
   </div>
   <div class="field">
-    <%= f.label :Image %><br>
+    <%= f.label :image %><br>
     <%= f.text_area :Image %>
   </div>
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+   <div class="field">
+    <%= f.hidden_field :Status, value: '0' %>
+    
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<br/>
+
+
+

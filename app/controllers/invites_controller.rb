@@ -21,18 +21,15 @@ class InvitesController < ApplicationController
   def edit
   end
 
-  # def joined
-  #   @joins = Invite.where(:is_joined => 1).take 
-  # end
-
   # POST /invites
   # POST /invites.json
   def create
     @invite = Invite.new(invite_params)
-
+    @invite.order_id=params[:order_id]
+    @invite.status_user=0
     respond_to do |format|
       if @invite.save
-        format.html { redirect_to @invite, notice: 'Invite was successfully created.' }
+        format.html { redirect_to orders_path, notice: 'Invite was successfully created.' }
         format.json { render :show, status: :created, location: @invite }
       else
         format.html { render :new }
@@ -73,6 +70,6 @@ class InvitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invite_params
-      params.require(:invite).permit(:join, :order_id, :user_id)
+      params.require(:invite).permit(:is_join, :order_id, :user_id, :status_user)
     end
 end

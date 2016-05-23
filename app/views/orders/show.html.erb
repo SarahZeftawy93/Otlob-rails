@@ -15,15 +15,45 @@
   <%= @order.Image %>
 </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @order.date %>
-</p>
+<%= hidden_field_tag :'order_id' ,@order.id %>
 
-<p>
-  <strong>User:</strong>
-  <%= @order.user %>
-</p>
+
+
+  <%= form_for(@invite) do |f| %>
+  
+  <div class="field">
+    <%= f.label :'Add email your friends' %><br>
+     <%= f.text_field :'email' %>
+      <div class="field">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+    </div>
+
+     <div class="field">
+    <%= f.hidden_field :order_id, value: order_id %>
+
+  </div>
+
+
+   
+    
+
+  </div>
+  
+  
+  <div class="actions">
+    <%= f.submit "Add"%>
+  </div>
+<% end %>
+<br/>
+
+
+
+
+
+
+
+
 
 
 <script type="text/javascript">

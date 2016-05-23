@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520153556) do
+ActiveRecord::Schema.define(version: 20160523143217) do
 
   create_table "amount_orders", force: :cascade do |t|
     t.text     "item",       limit: 65535
@@ -29,10 +29,11 @@ ActiveRecord::Schema.define(version: 20160520153556) do
 
   create_table "friends", force: :cascade do |t|
     t.integer  "friend_id",  limit: 4
+    t.text     "email",      limit: 65535
     t.integer  "group_id",   limit: 4
     t.integer  "user_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "friends", ["group_id"], name: "index_friends_on_group_id", using: :btree
@@ -48,11 +49,13 @@ ActiveRecord::Schema.define(version: 20160520153556) do
   add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
 
   create_table "invites", force: :cascade do |t|
-    t.boolean  "is_joined"
-    t.integer  "order_id",   limit: 4
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.boolean  "is_join"
+    t.integer  "order_id",    limit: 4
+    t.integer  "user_id",     limit: 4
+    t.boolean  "status_user"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "email",       limit: 255
   end
 
   add_index "invites", ["order_id"], name: "index_invites_on_order_id", using: :btree
@@ -62,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160520153556) do
     t.text     "order",      limit: 65535
     t.text     "place",      limit: 65535
     t.text     "Image",      limit: 65535
+    t.integer  "Status",     limit: 4
     t.datetime "date"
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",               null: false

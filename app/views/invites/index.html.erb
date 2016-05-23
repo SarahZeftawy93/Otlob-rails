@@ -5,9 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Join</th>
+      <th>Is join</th>
       <th>Order</th>
       <th>User</th>
+      <th>Status user</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,13 +16,13 @@
   <tbody>
     <% @invites.each do |invite| %>
       <tr>
-        <td><%= invite.is_joined %></td>
-        <td><%= invite.order_id %></td>
-        <td><%= invite.user_id %></td>
-
-          <% if invite.user_id == 2%>
-             <td><%= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end%>
+        <td><%= invite.is_join %></td>
+        <td><%= invite.order %></td>
+        <td><%= invite.user %></td>
+        <td><%= invite.status_user %></td>
+        <td><%= link_to 'Show', invite %></td>
+        <td><%= link_to 'Edit', edit_invite_path(invite) %></td>
+        <td><%= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

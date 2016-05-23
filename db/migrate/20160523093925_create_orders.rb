@@ -4,6 +4,7 @@ class CreateOrders < ActiveRecord::Migration
       t.text :order
       t.text :place
       t.text :Image
+      t.integer :Status
       t.datetime :date
       t.references :user, index: true, foreign_key: true
 

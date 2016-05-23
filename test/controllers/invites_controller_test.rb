@@ -18,7 +18,7 @@ class InvitesControllerTest < ActionController::TestCase
 
   test "should create invite" do
     assert_difference('Invite.count') do
-      post :create, invite: { join: @invite.join, order_id: @invite.order_id, user_id: @invite.user_id }
+      post :create, invite: { is_join: @invite.is_join, order_id: @invite.order_id, status_user: @invite.status_user, user_id: @invite.user_id }
     end
 
     assert_redirected_to invite_path(assigns(:invite))
@@ -35,7 +35,7 @@ class InvitesControllerTest < ActionController::TestCase
   end
 
   test "should update invite" do
-    patch :update, id: @invite, invite: { join: @invite.join, order_id: @invite.order_id, user_id: @invite.user_id }
+    patch :update, id: @invite, invite: { is_join: @invite.is_join, order_id: @invite.order_id, status_user: @invite.status_user, user_id: @invite.user_id }
     assert_redirected_to invite_path(assigns(:invite))
   end
 

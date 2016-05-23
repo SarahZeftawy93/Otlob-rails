@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :invites
   resources :amount_orders
   resources :invites
   resources :orders

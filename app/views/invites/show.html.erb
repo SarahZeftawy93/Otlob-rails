@@ -1,18 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Join:</strong>
-  <%= @invite.is_joined %>
+  <strong>Is join:</strong>
+  <%= @invite.is_join %>
 </p>
 
 <p>
   <strong>Order:</strong>
-  <%= @invite.order_id %>
+  <%= @invite.order %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @invite.user_id %>
+  <%= @invite.user %>
+</p>
+
+<p>
+  <strong>Status user:</strong>
+  <%= @invite.status_user %>
 </p>
 
 <%= link_to 'Edit', edit_invite_path(@invite) %> |

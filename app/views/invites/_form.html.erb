@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :is_joined %><br>
-    <%= f.check_box :is_joined %>
+    <%= f.label :is_join %><br>
+    <%= f.check_box :is_join %>
   </div>
   <div class="field">
     <%= f.label :order_id %><br>
@@ -22,6 +22,10 @@
   <div class="field">
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :status_user %><br>
+    <%= f.check_box :status_user %>
   </div>
   <div class="actions">
     <%= f.submit %>
