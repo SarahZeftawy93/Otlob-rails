@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :friends
   resources :groups
   devise_for :users
-  resources :counter
 
   
   # get 'emy' => 'welcome#hello'
